@@ -1,14 +1,15 @@
-import { Button, WrapperButton } from './FeedbackOptions.styled';
+import { OptionBtn } from './FeedbackOptions.styled';
 
-export const FeedbackOptions = ({ options, onLeaveFeedback }) => {
-  const [good, neutral, bad] = options;
-  return (
-    <>
-      <WrapperButton>
-        <Button onClick={() => onLeaveFeedback(good)}>Good</Button>
-        <Button onClick={() => onLeaveFeedback(neutral)}>Neutral</Button>
-        <Button onClick={() => onLeaveFeedback(bad)}>Bad</Button>
-      </WrapperButton>
-    </>
-  );
-};
+export const FeedbackOptions = ({ options, onLeaveFeedback }) => (
+  <div>
+    {options.map(option => (
+      <OptionBtn
+        key={option}
+        option={option}
+        onClick={() => onLeaveFeedback(option)}
+      >
+        {option}
+      </OptionBtn>
+    ))}
+  </div>
+);
